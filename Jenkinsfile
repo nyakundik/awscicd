@@ -9,6 +9,11 @@ pipeline {
                 sh 'echo today'
             }
         }
+        stage('test'){
+            steps{
+                sh 'echo test'
+            }
+        }
     }
 
     
