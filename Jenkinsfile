@@ -36,6 +36,11 @@ pipeline {
                 sh 'docker push 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest'
             }
         }
+        stage('Dockerps'){
+            steps{
+                sh 'docker ps'
+            }
+        }
     }
 
 }
