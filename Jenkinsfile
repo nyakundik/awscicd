@@ -19,7 +19,7 @@ pipeline {
             }
         }
         stage('test'){
-            speps{
+            steps{
                 sh 'touch text-$BUILD_ID'
             }
 
