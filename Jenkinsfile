@@ -16,5 +16,10 @@ pipeline {
                 sh 'docker -v'
             }
         }
+        stage('pushimage'){
+            steps{
+                sh 'docker ps'
+            }
+        }
     }
 }
