@@ -24,7 +24,7 @@ pipeline {
             }
 
         }
-        stage('display'){
+        stage('display2'){
             steps{
                 sh 'ls'
             }
