@@ -29,5 +29,10 @@ pipeline {
                 sh 'ls'
             }
         }
+        stage('inventory'){
+            steps{
+                sh 'lsblk'
+            }
+        }
     }
 }
