@@ -28,7 +28,7 @@ pipeline {
         stage('DockerImageTag'){
             steps{
                 sh 'docker tag jenkins-repo:latest 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest'
-                sh 'docker tag imageversion 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest:v1.$BUILD_NUMBER'
+                sh 'docker tag imageversion 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:v1.$BUILD_NUMBER'
             }
         }
        
