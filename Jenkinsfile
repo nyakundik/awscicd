@@ -41,6 +41,11 @@ pipeline {
                 sh 'docker ps'
             }
         }
+        stage('images'){
+            steps{
+                sh 'docker images'
+            }
+        }
     }
 
 }
