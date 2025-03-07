@@ -19,21 +19,23 @@ pipeline {
 
             }
         }
+         stage('dockerimagebuild'){
+            steps{
+                sh 'docker build -t jenkins-repo .'
+            }
+         }
         stage('DockerImageTag'){
             steps{
                 sh 'docker tag jenkins-repo:latest 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest'
             }
         }
-        stage('dockerimagebuild'){
-            steps{
-                sh 'docker build -t jenkins-repo .'
-            }
-        }
+       
+        
         stage('PushImage'){
             steps{
                 sh 'docker push 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest'
             }
         }
     }
-    
+
 }
