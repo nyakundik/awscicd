@@ -22,11 +22,15 @@ pipeline {
          stage('dockerimagebuild'){
             steps{
                 sh 'docker build -t jenkins-repo .'
+                sh 'docker build -t imageversion .'
             }
          }
         stage('DockerImageTag'){
             steps{
-                sh 'docker tag jenkins-repo:latest 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest'
+                sh 'docker tag jenkins-repo:latest \ 
+                650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest'
+                sh 'docker tag imageversion:latest \ 
+                650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest:v1.$BUILD_NUMBER'
             }
         }
        
@@ -34,6 +38,7 @@ pipeline {
         stage('PushImage'){
             steps{
                 sh 'docker push 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:latest'
+                sh 'docker push 650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo:v1.$BUILD_NUMBER'
             }
         }
         stage('Dockerps'){
