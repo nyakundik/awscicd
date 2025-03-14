@@ -2,7 +2,11 @@ pipeline {
 
     agent any
 
-    stages{
+    environment{
+        AWS_REGION = 'us-east-1'
+        ECR_REPO = '650251701803.dkr.ecr.us-east-1.amazonaws.com/jenkins-repo'
+        BRANCH_NAME = 'main'
+        GIT_URL = 'https://github.com/nyakundik/awscicd.git'
 
         stage('CodeScan'){
             steps{
@@ -49,6 +53,21 @@ pipeline {
                 sh 'docker images'
             }
         }
+
+        stage('git chekout'){
+            steps{
+                git branch: "${BRANCH_NAME}", url: "${GIT_URL}"
+        }
+        
     }
+
+    stage('os-version'){
+        steps{
+            sh 'cat /etc/os-release'
+        }
+    }
+
+
+}
 
 }
